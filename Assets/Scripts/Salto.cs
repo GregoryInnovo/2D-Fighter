@@ -12,7 +12,7 @@ public class Salto : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        fuerzaY = new Vector2(0f, 2f);
+        fuerzaY = new Vector2(0f, 3f);
         fuerzaX = new Vector2(2f, 0f);
     }
     void Update()
