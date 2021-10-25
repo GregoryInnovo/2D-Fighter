@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Salto : MonoBehaviour
-{
+{//https://www.youtube.com/watch?v=uqofxjeY5fg
     //public float fuerzaSalto;
     public bool estaEnSuelo=false;
     public Vector2 fuerzaY;
     public Vector2 fuerzaX;
     public Rigidbody2D rb;
+
+    public float velMove;
+    public float velJump;
+    public KeyCode izquierda;
+    public KeyCode derecha;
+    public KeyCode salto;
+    public KeyCode abajo;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
@@ -17,19 +24,24 @@ public class Salto : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && estaEnSuelo==true)
+        if (Input.GetKeyDown(salto) && estaEnSuelo==true)
         {
             //      this.gameObject.transform.position = transform.position + new Vector3(0f,this.gameObject.transform.position.y + fuerzaSalto, 0f);
-            rb.AddForce(fuerzaY, ForceMode2D.Impulse);
+            //    rb.AddForce(fuerzaY, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, velJump);
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(izquierda))
         {
-            rb.AddForce(fuerzaX, ForceMode2D.Impulse);
+           // rb.AddForce(fuerzaX, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(-velMove, rb.velocity.y);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+      
+        if (Input.GetKey(derecha))
         {
-            rb.AddForce(-fuerzaX, ForceMode2D.Impulse);
+            //       rb.AddForce(-fuerzaX, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(velMove, rb.velocity.y);
         }
+
 
     }
     private void FixedUpdate()
