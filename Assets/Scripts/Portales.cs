@@ -5,14 +5,19 @@ using UnityEngine;
 public class Portales : MonoBehaviour
 {
     public GameObject player;
-    public GameObject spwan;
+    public GameObject spawnX;
+
+    public GameObject spawnY;
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.CompareTag("Pared"))
+        if (other.CompareTag("PortalX"))
         {
-
-            player.transform.position = new Vector2 (spwan.transform.position.x, player.transform.position.y);
+            player.transform.position = new Vector2 (spawnX.transform.position.x, player.transform.position.y);
+        }
+        if (other.CompareTag("PortalY"))
+        {
+            player.transform.position = new Vector2(player.transform.position.x, spawnY.transform.position.y);
         }
     }
 }
