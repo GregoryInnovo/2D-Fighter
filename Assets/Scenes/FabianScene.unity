@@ -340,8 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 38972399}
-  spawnX: {fileID: 1350463071}
-  spawnY: {fileID: 1191768077}
+  spawnXP: {fileID: 0}
+  spawnXM: {fileID: 0}
+  spawnYP: {fileID: 0}
+  spawnYM: {fileID: 0}
 --- !u!1 &78417478
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +642,7 @@ GameObject:
   - component: {fileID: 539117831}
   m_Layer: 0
   m_Name: ParedDerecha
-  m_TagString: PortalX
+  m_TagString: PortalXP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1298,7 +1300,7 @@ GameObject:
   - component: {fileID: 1191768078}
   m_Layer: 0
   m_Name: ParedArriba
-  m_TagString: PortalY
+  m_TagString: PortalYP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1406,7 +1408,7 @@ GameObject:
   - component: {fileID: 1350463072}
   m_Layer: 0
   m_Name: ParedIzquierda
-  m_TagString: Untagged
+  m_TagString: PortalXM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1580,7 +1582,7 @@ GameObject:
   - component: {fileID: 1443220531}
   m_Layer: 0
   m_Name: ParedAbajo
-  m_TagString: PortalY
+  m_TagString: PortalYM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1885,7 +1887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606568711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.172, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18289576}
@@ -1970,8 +1972,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1606568711}
-  spawnX: {fileID: 1350463071}
-  spawnY: {fileID: 1191768077}
+  spawnXP: {fileID: 539117830}
+  spawnXM: {fileID: 1350463071}
+  spawnYP: {fileID: 1191768077}
+  spawnYM: {fileID: 1443220530}
 --- !u!1 &1691826842
 GameObject:
   m_ObjectHideFlags: 0

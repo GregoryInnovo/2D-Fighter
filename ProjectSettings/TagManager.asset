@@ -7,8 +7,10 @@ TagManager:
   - suelo
   - UpVel
   - UpJump
-  - PortalX
-  - PortalY
+  - PortalXP
+  - PortalXM
+  - PortalYP
+  - PortalYM
   layers:
   - Default
   - TransparentFX
