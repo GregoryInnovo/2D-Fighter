@@ -11,23 +11,38 @@ public class Portales : MonoBehaviour
     public GameObject spawnYP;
     public GameObject spawnYM;
 
+    public bool estaEnPortal;
+    public float tiempoEnElPortal=0.1f;
+
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.CompareTag("PortalXP"))
+        if (other.CompareTag("PortalXP")&& estaEnPortal==false)
         {
-            player.transform.position = new Vector2 (spawnXP.transform.position.x, player.transform.position.y);
+            player.transform.position = new Vector2 (spawnXM.transform.position.x, player.transform.position.y);
+            StartCoroutine(VolverUsarPortal());
         }
-        if (other.CompareTag("PortalXM"))
+        if (other.CompareTag("PortalXM") && estaEnPortal == false)
         {
-            player.transform.position = new Vector2(spawnXM.transform.position.x, player.transform.position.y);
+            player.transform.position = new Vector2(spawnXP.transform.position.x, player.transform.position.y);
+            StartCoroutine(VolverUsarPortal());
         }
-            if (other.CompareTag("PortalYP"))
-        {
-            player.transform.position = new Vector2(player.transform.position.x, spawnYP.transform.position.y);
-        }
-        if (other.CompareTag("PortalYM"))
+            if (other.CompareTag("PortalYP") && estaEnPortal == false)
         {
             player.transform.position = new Vector2(player.transform.position.x, spawnYM.transform.position.y);
+            StartCoroutine(VolverUsarPortal());
+        }
+        if (other.CompareTag("PortalYM") && estaEnPortal == false)
+        {
+           // Debug.Log("deberia funcionar");
+            player.transform.position = new Vector2(player.transform.position.x, spawnYP.transform.position.y);
+            StartCoroutine(VolverUsarPortal());
         }
     }// como funciona los teleporst
+    IEnumerator VolverUsarPortal()
+    {
+        estaEnPortal = true;
+        yield return new  WaitForSeconds(tiempoEnElPortal);
+        estaEnPortal = false;
+
+    }
 }

@@ -351,6 +351,8 @@ MonoBehaviour:
   spawnXM: {fileID: 1350463071}
   spawnYP: {fileID: 1191768077}
   spawnYM: {fileID: 1443220530}
+  estaEnPortal: 0
+  tiempoEnElPortal: 0.1
 --- !u!4 &78417481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8777683394158076344, guid: a0d8e4a89edcc4f4196130d7b91462cc,
@@ -1831,6 +1833,8 @@ MonoBehaviour:
   spawnXM: {fileID: 1350463071}
   spawnYP: {fileID: 1191768077}
   spawnYM: {fileID: 1443220530}
+  estaEnPortal: 0
+  tiempoEnElPortal: 0.1
 --- !u!1 &1691826842
 GameObject:
   m_ObjectHideFlags: 0
