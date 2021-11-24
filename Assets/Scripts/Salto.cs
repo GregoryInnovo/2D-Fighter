@@ -39,8 +39,8 @@ public class Salto : MonoBehaviour
             playerSprite.flipX = true;
             
         }
-      
         if (Input.GetKey(derecha))
+      
         {
             //       rb.AddForce(-fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(velMove, rb.velocity.y);
@@ -50,10 +50,12 @@ public class Salto : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
+        
         if (collision.gameObject.tag == "suelo")
-        {
             estaEnSuelo = true;
-        }
+        if (collision.gameObject.tag == "Player")
+            estaEnSuelo = true;
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
