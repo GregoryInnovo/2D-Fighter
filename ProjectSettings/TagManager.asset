@@ -11,6 +11,7 @@ TagManager:
   - PortalXM
   - PortalYP
   - PortalYM
+  - "da\xF1o"
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class Salto : MonoBehaviour
     public Vector2 fuerzaY;
     public Vector2 fuerzaX;
     public Rigidbody2D rb;
+    private SpriteRenderer playerSprite;
 
     public float velMove;
     public float velJump;
@@ -18,6 +19,7 @@ public class Salto : MonoBehaviour
     public KeyCode abajo;
     private void Start()
     {
+        playerSprite = this.GetComponent<SpriteRenderer>();
         rb = this.GetComponent<Rigidbody2D>();
         fuerzaY = new Vector2(0f, 3f);
         fuerzaX = new Vector2(2f, 0f);
@@ -34,19 +36,17 @@ public class Salto : MonoBehaviour
         {
            // rb.AddForce(fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(-velMove, rb.velocity.y);
+            playerSprite.flipX = true;
+            
         }
       
         if (Input.GetKey(derecha))
         {
             //       rb.AddForce(-fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(velMove, rb.velocity.y);
+            playerSprite.flipX = false;
         }
 
-
-    }
-    private void FixedUpdate()
-    {
-    
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
