@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JuanScene.unity
     guid: 617ad66409c6f9b4bbc58f1ff528b0b6
+  - enabled: 1
+    path: Assets/Scenes/Estadisticas.unity
+    guid: 596da77730230cf4ba807ac41c52b9f9
   m_configObjects: {}

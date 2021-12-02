@@ -25,7 +25,7 @@ public class LoadScene : MonoBehaviour
                 break;
             case 2: 
                 Debug.Log("Escena 2");
-                // SceneManager.LoadScene(2);
+                StartCoroutine(FadeSalida("Estadisticas"));
             break;
             case 3: 
                 Debug.Log("Escena 2");
