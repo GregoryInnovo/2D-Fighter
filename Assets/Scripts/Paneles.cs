@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Paneles : MonoBehaviour
 {
-    public Vida vidaplayer1;
-    public Vida vidaplayer2;
+    [SerializeField] Vida vidaplayer1;
+    [SerializeField] Vida vidaplayer2;
 
-    public GameObject panelGameOver;
-    public Text textGameOver;
-    public Text text_Timer;
-    public float timer;
+    [SerializeField] GameObject panelGameOver;
+    [SerializeField] Text textGameOver;
+    [SerializeField] Text text_Timer;
+    [SerializeField] float timer;
 
     private void Start()
     {
         panelGameOver.SetActive(false);
-     
+
     }
     private void Update()
     { // timer inicio
@@ -33,13 +34,24 @@ public class Paneles : MonoBehaviour
     }
     public void Timer()
     {
-        text_Timer.text = timer.ToString("0");
+
         if (timer >= 0)
         {
+            text_Timer.text = timer.ToString("0");
             timer -= 1 * Time.deltaTime;
         }
         else
-            Destroy(text_Timer);
+        {
+
+            text_Timer.text = ("¡A Jugar!");
+            StartCoroutine(espera());
+        }
+       
+    }
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(text_Timer);
     }
 
 }

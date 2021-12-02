@@ -42,7 +42,6 @@ public class PowerUp : MonoBehaviour
 
 	IEnumerator PowerUpVel()
 	{
-		Debug.Log("deberia funcionar");
 		this.gameObject.GetComponent<Salto>().velMove = velPowerUp;
 		yield return new WaitForSeconds(timePowerUp);
 		this.gameObject.GetComponent<Salto>().velMove = velNormal;
