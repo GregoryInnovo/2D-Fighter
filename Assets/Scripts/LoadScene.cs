@@ -18,8 +18,8 @@ public class LoadScene : MonoBehaviour
                 Debug.Log("Escena Menú");         
                 break;
             case 1:
-                StartCoroutine(FadeSalida("FabianScene"));
-                Debug.Log("Escena 1");
+                StartCoroutine(FadeSalida("Game"));
+                Debug.Log("Escena Game");
             //    SceneManager.LoadScene("FabianScene");
               
                 break;
@@ -28,7 +28,8 @@ public class LoadScene : MonoBehaviour
                 StartCoroutine(FadeSalida("Estadisticas"));
             break;
             case 3: 
-                Debug.Log("Escena 2");
+                Debug.Log("Escena game");
+
             break;
             default: 
                 Debug.Log("Escena 2");

@@ -17,6 +17,14 @@ public class Salto : MonoBehaviour
     public KeyCode derecha;
     public KeyCode salto;
     public KeyCode abajo;
+    public KeyCode disparo;
+    public GameObject proyectil;
+    public Transform verticeDisparo;
+    public Transform verticeDisparoIz;
+    public Transform posicionDisparo;
+    public int balaSpeed;
+    public bool puedeDisparar=true;
+    public float tiempoEsperaBala;
     private void Start()
     {
         playerSprite = this.GetComponent<SpriteRenderer>();
@@ -37,7 +45,8 @@ public class Salto : MonoBehaviour
            // rb.AddForce(fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(-velMove, rb.velocity.y);
             playerSprite.flipX = true;
-            
+
+            posicionDisparo.position = verticeDisparoIz.position;
         }
         if (Input.GetKey(derecha))
       
@@ -45,6 +54,12 @@ public class Salto : MonoBehaviour
             //       rb.AddForce(-fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(velMove, rb.velocity.y);
             playerSprite.flipX = false;
+            posicionDisparo.position = verticeDisparo.position;
+
+        }
+        if (Input.GetKey(disparo))
+        {
+            Fire();
         }
 
     }
@@ -60,6 +75,39 @@ public class Salto : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         estaEnSuelo = false;
+    }
+    private void Fire()
+    {
+        if (puedeDisparar == true)
+        {
+            int direction()
+            {
+                if (playerSprite.flipX == true)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return +1;
+                }
+
+            }
+            //  Instantiate(proyectil, verticeDisparo.position, verticeDisparo.rotation);
+            GameObject obj = ObjectPolling.current.GetPooledObject();
+            if (obj == null) return;
+
+            obj.transform.position = posicionDisparo.position;
+            obj.transform.rotation = posicionDisparo.rotation;
+            obj.SetActive(true);
+            obj.GetComponent<Rigidbody2D>().velocity = new Vector2(balaSpeed * direction() * Time.fixedDeltaTime, 0f);
+            StartCoroutine(Esperabala());
+        }
+    }
+    IEnumerator Esperabala()
+    {
+        puedeDisparar = false;
+        yield return new WaitForSeconds(tiempoEsperaBala);
+        puedeDisparar = true;
     }
 
 }
