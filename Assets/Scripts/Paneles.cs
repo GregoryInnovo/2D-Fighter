@@ -12,17 +12,21 @@ public class Paneles : MonoBehaviour
     [SerializeField] Text text_Timer;
     [SerializeField] float timer;
 
+    public AudioSource source;
+     public AudioClip clip;
     private GameObject player1, player2;
-    private bool auxActivePlayers;
+    private bool auxActivePlayers, auxVoice;
 
     private void Start()
     {
         panelGameOver.SetActive(false);
+        source = GetComponent<AudioSource>();
 
         // Encuentra el gameObject
         player1 = GameObject.Find("Player_1");
         player2 = GameObject.Find("Player_2");   
         auxActivePlayers = true;    
+        auxVoice = true;    
     }
     
     private void Update()
@@ -51,6 +55,10 @@ public class Paneles : MonoBehaviour
         {
             text_Timer.text = timer.ToString("0");
             timer -= 1 * Time.deltaTime;
+            if (auxVoice) {
+                source.Play();
+                auxVoice=false;
+            }
         }
         else
         {
