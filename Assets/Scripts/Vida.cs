@@ -21,8 +21,17 @@ public class Vida : MonoBehaviour
     public Sprite emptyHeart;
 
     public bool invencible = false;
-    public int Nmuertes=0;
+
     public int id;
+
+    //contador de muertes por cada jugador
+    public int vidaP1, vidaP2;
+    private void Awake()
+    {
+        //Obtengo el numero guardado de muertes
+        vidaP1 = PlayerPrefs.GetInt("vidaP1Pref");
+        vidaP2 = PlayerPrefs.GetInt("vidaP2Pref");
+    }
     void Update()
     {
         if (health > numOfHearts)
@@ -51,9 +60,9 @@ public class Vida : MonoBehaviour
         }
         if (health == 0)
         {
-            Nmuertes++;
+      //      Nmuertes++;
             health--;
-            Historial.instance.SumarMuerte(id);
+            SumarMuerte(id);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -84,8 +93,27 @@ public class Vida : MonoBehaviour
             GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(0.5f);
         }
-       
+
     }
-  
+    //Guardo la nueva variable de  numero de muertes
+    public void GuardarInt()
+    {
+        PlayerPrefs.SetInt("vidaP1Pref", vidaP1);
+        PlayerPrefs.SetInt("vidaP2Pref", vidaP2);
+    }
+    //sumo + 1 a la variable anterior dependiendo del id del jugador
+    public void SumarMuerte(int id)
+    {
+        if (id == 1)
+        {
+            vidaP1++;
+        }
+        if (id == 2)
+        {
+            vidaP2++;
+        }
+        GuardarInt();
+    }
+
 }
 

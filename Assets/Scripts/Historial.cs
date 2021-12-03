@@ -6,49 +6,27 @@ using UnityEngine.UI;
 public class Historial : MonoBehaviour
 {
     public static Historial instance;
-    public int vidaP1, vidaP2;
+    public GameObject player1, player2;
     public Text vidaP1Text, vidaP2Text;
-    public void Awake()
+    private void Awake()
     {
-     
-        vidaP1 = PlayerPrefs.GetInt("vidaP1Pref");
-        vidaP2 = PlayerPrefs.GetInt("vidaP2Pref");
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
         VidaPlayersGui();
-        DontDestroyOnLoad(gameObject);
+        EncontrarVar();
     }
-    public void GuardarInt()
+    public void EncontrarVar()
     {
-        PlayerPrefs.SetInt("vidaP1Pref", vidaP1);
-        PlayerPrefs.SetInt("vidaP2Pref", vidaP2);
+        player1.GetComponent<Vida>().vidaP1 = PlayerPrefs.GetInt("vidaP1Pref");
+        player2.GetComponent<Vida>().vidaP2 = PlayerPrefs.GetInt("vidaP2Pref");
+
+        vidaP1Text.text = "Muertes totales: " + player1.GetComponent<Vida>().vidaP1;
+        vidaP2Text.text = "Muertes totales: " + player2.GetComponent<Vida>().vidaP2;
     }
-    public void SumarMuerte(int id)
-    {
-        if (id == 1)
-        {
-            vidaP1++;
-        }
-        if (id == 2)
-        {
-            vidaP2++;
-        }
-        GuardarInt(); 
-        VidaPlayersGui();
-    }
+   
+   
     public void VidaPlayersGui()
     {
-        vidaP1Text.text ="Muertes totales: "+ vidaP1.ToString();
-        vidaP2Text.text = "Muertes totales: "+ vidaP2.ToString();
+        //vidaP1Text.text ="Muertes totales: "+ vidaP1.ToString();
+        //vidaP2Text.text = "Muertes totales: "+ vidaP2.ToString();
     }
     void OnGUI()
     {
