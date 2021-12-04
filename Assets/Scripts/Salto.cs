@@ -25,6 +25,7 @@ public class Salto : MonoBehaviour
     public int balaSpeed;
     public bool puedeDisparar=true;
     public float tiempoEsperaBala;
+    public Animator anim;
     private void Start()
     {
         playerSprite = this.GetComponent<SpriteRenderer>();
@@ -34,20 +35,35 @@ public class Salto : MonoBehaviour
     }
     void Update()
     {
+   
         if (Input.GetKeyDown(salto) && estaEnSuelo==true)
         {
             //      this.gameObject.transform.position = transform.position + new Vector3(0f,this.gameObject.transform.position.y + fuerzaSalto, 0f);
             //    rb.AddForce(fuerzaY, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, velJump);
+            anim.SetBool("jump", true);
+        }
+        if(estaEnSuelo == false)
+        {
+            anim.SetBool("jump", true);
+        }
+        else
+        {
+            anim.SetBool("jump", false);
         }
         if(Input.GetKey(izquierda))
         {
            // rb.AddForce(fuerzaX, ForceMode2D.Impulse);
             rb.velocity = new Vector2(-velMove, rb.velocity.y);
-            playerSprite.flipX = true;
-
+            playerSprite.flipX = true;         
             posicionDisparo.position = verticeDisparoIz.position;
+            anim.SetBool("velocidad", true);
         }
+        else
+        {
+            anim.SetBool("velocidad", false);     
+        }
+
         if (Input.GetKey(derecha))
       
         {
@@ -55,12 +71,16 @@ public class Salto : MonoBehaviour
             rb.velocity = new Vector2(velMove, rb.velocity.y);
             playerSprite.flipX = false;
             posicionDisparo.position = verticeDisparo.position;
-
+            anim.SetBool("velocidad", true);
         }
+       
+       
         if (Input.GetKey(disparo))
         {
             Fire();
         }
+      
+        
 
     }
     private void OnCollisionStay2D(Collision2D collision)
