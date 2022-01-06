@@ -23,6 +23,7 @@ public class Vida : MonoBehaviour
     public bool invencible = false;
 
     public int id;
+    public Slider slider;
 
     //contador de muertes por cada jugador
     public int vidaP1, vidaP2;
@@ -71,6 +72,18 @@ public class Vida : MonoBehaviour
         {
             TakeADamage();
         }
+
+        if(collision.gameObject.tag == "Ulti" && invencible == false)
+        {
+            ActiveUlti();
+        }
+
+    }
+    public void ActiveUlti()
+    {
+        Debug.Log(slider.value);
+        slider.value = 80f;
+        Debug.Log(slider.value);
     }
     public void TakeADamage()
     {
