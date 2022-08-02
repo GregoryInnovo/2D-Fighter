@@ -26,6 +26,7 @@ public GameObject GetPooledObject()
     {
         for (int i = 0; i < poolerObjects.Count; i++)
         {
+            Debug.Log("entro al loop");
             if (!poolerObjects[i].activeInHierarchy)
             {
                 return poolerObjects[i];
