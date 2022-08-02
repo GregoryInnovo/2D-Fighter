@@ -5,43 +5,49 @@ using UnityEngine;
 public class Portales : MonoBehaviour
 {
     public GameObject player;
-    public GameObject spawnXP;
-    public GameObject spawnXM;
-
-    public GameObject spawnYP;
-    public GameObject spawnYM;
+    [Header("Portales de entrada")]
+    //derecha
+    public GameObject portalDer;
+    public GameObject portalIzq;
+    public GameObject portalArriba;
+    public GameObject portalAbajo;
+    [Header("Portales de salida")]
+    public GameObject Der;
+    public GameObject izq;
+    public GameObject arriba;
+    public GameObject abajo;
 
     public bool estaEnPortal;
-    public float tiempoEnElPortal=0.1f;
+    public float tiempoEnElPortal = 0.05f;
 
-    void OnTriggerEnter2D (Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PortalXP")&& estaEnPortal==false)
+        if (other.CompareTag("PortalXP") && estaEnPortal == false)
         {
-            player.transform.position = new Vector2 (spawnXM.transform.position.x, player.transform.position.y);
+            player.transform.position = new Vector2(izq.transform.position.x, player.transform.position.y);
             StartCoroutine(VolverUsarPortal());
         }
         if (other.CompareTag("PortalXM") && estaEnPortal == false)
         {
-            player.transform.position = new Vector2(spawnXP.transform.position.x, player.transform.position.y);
+            player.transform.position = new Vector2(Der.transform.position.x, player.transform.position.y);
             StartCoroutine(VolverUsarPortal());
         }
-            if (other.CompareTag("PortalYP") && estaEnPortal == false)
+        if (other.CompareTag("PortalYP") && estaEnPortal == false)
         {
-            player.transform.position = new Vector2(player.transform.position.x, spawnYM.transform.position.y);
+            player.transform.position = new Vector2(player.transform.position.x, abajo.transform.position.y);
             StartCoroutine(VolverUsarPortal());
         }
         if (other.CompareTag("PortalYM") && estaEnPortal == false)
         {
-           // Debug.Log("deberia funcionar");
-            player.transform.position = new Vector2(player.transform.position.x, spawnYP.transform.position.y);
-            StartCoroutine(VolverUsarPortal());
+            // Debug.Log("deberia funcionar");
+            player.transform.position = new Vector2(player.transform.position.x, arriba.transform.position.y);
+          //  StartCoroutine(VolverUsarPortal());
         }
     }// como funciona los teleporst
     IEnumerator VolverUsarPortal()
     {
         estaEnPortal = true;
-        yield return new  WaitForSeconds(tiempoEnElPortal);
+        yield return new WaitForSeconds(tiempoEnElPortal);
         estaEnPortal = false;
 
     }

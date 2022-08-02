@@ -17,7 +17,7 @@ public class ObjectPolling : MonoBehaviour
         {
             GameObject obj = Instantiate(poolerObject);
             obj.SetActive(false);
-            Debug.Log("deberia funcionar");
+       //     Debug.Log("deberia funcionar");
             poolerObjects.Add(obj);
         
         }
